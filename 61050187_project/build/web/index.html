@@ -31,7 +31,7 @@ and open the template in the editor.
         <script>
                 $(function() {
                var local = [];
-               console.log("local");
+//               console.log("local");
                $.getJSON('api/local.json', function(data) {
                    $.each(data.result.records, function(i, f) {
                       var tblRow = "<tr>" + "<td>" + f.Local_government_organization + "</td>" +
