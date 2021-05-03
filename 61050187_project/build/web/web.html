@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <style>
+            table {
+              font-family: arial, sans-serif;
+              border-collapse: collapse;
+              width: 100%;
+            }
+
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+            }
+
+            tr:nth-child(even) {
+              background-color: #dddddd;
+            }
+            </style>
+        <title>Web site Local</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+        <script>
+                $(function() {
+               var weblocal = [];
+               console.log("local");
+               $.getJSON('api/weblocal.json', function(data) {
+                   $.each(data.result.records, function(i, f) {
+                      var tblRow = "<tr>" + "<td>" + f.PROVINCE_NAME + "</td>" +
+                       "<td>" + f.AMP_NAME + "</td>" + "<td>" + f.Local_government_organization + "</td>" 
+                       + "<td>"+ f.WEBSITE + "</td>" + "</tr>"
+                       console.log(tblRow)
+                       $(tblRow).appendTo("#data tbody");
+                 });
+               });
+            });
+        </script>
+    </head>
+    <body>
+        <a href="http://localhost:8080/61050187_project/">back to home</a>
+        <center>
+            <div><h1>Website ของสำนักงานองค์การปกครองส่วนท้องถิ่น</h1></div>
+            <div>
+                <table id="data">
+                  <tr>
+                      <th> จังหวัด </th>
+                      <th> อำเภอ </th>
+                      <th> สำนักงานองค์การปกครองส่วนท้องถิ่น </th>
+                      <th> Website </th>
+                  </tr>
+                      <tbody>
+                          
+                      </tbody>
+                </table>
+            </div>
+        </center>
+    </body>
+</html>

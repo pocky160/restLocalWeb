@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <style>
+            table {
+              font-family: arial, sans-serif;
+              border-collapse: collapse;
+              width: 100%;
+            }
+
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+            }
+
+            tr:nth-child(even) {
+              background-color: #dddddd;
+            }
+            </style>
+    
+        <title>Home</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+        <script>
+                $(function() {
+               var local = [];
+               console.log("local");
+               $.getJSON('api/local.json', function(data) {
+                   $.each(data.result.records, function(i, f) {
+                      var tblRow = "<tr>" + "<td>" + f.Local_government_organization + "</td>" +
+                       "<td>" + f.Number + "</td>" + "<td>" + f['Village No']+ "</td>" + "<td>" + f.Road + "</td>" 
+                       + "<td>"+ f.Address_district + "</td>" + "<td>"+ f.Address_amphure + "</td>" + "<td>"+ f.Address_province + "</td>" 
+                       + "<td>"+ f.Zipcode + "</td>" + "<td>"+ f.LAT + "</td>" + "<td>"+ f.LNG + "</td>" + "</tr>"
+                       console.log(tblRow)
+                       $(tblRow).appendTo("#data tbody");
+                 });
+               });
+            });
+        </script>
+    </head>
+    <body>
+            <a href="http://localhost:8080/61050187_project/">home</a>
+            <a href="http://localhost:8080/61050187_project/Servlet">refresh</a>
+            <a href="http://localhost:8080/61050187_project/web.html">All Web site</a>
+        <center>
+            <div><h1>สถานที่ตั้งของสำนักงานองค์การปกครองส่วนท้องถิ่น</h1></div>
+            <div>
+                <table id="data">
+                  <tr>
+                      <th> สถานที่ตั้งของสำนักงานองค์การปกครองส่วนท้องถิ่น </th>
+                      <th> เลขที่ </th>
+                      <th> หมู่ </th>
+                      <th> ถนน </th>
+                      <th> ตำบล </th>
+                      <th> อำเภอ </th>
+                      <th> จังหวัด </th>
+                      <th> รหัสไปรษณีย์ </th>
+                      <th> ละติจูด </th>
+                      <th> ลองจิจูด </th>
+                  </tr>
+                      <tbody>
+                          
+                      </tbody>
+                </table>
+            </div>
+        </center>
+    </body>
+</html>
